@@ -1,7 +1,9 @@
 import express from "express";
 import cors from "cors";
 import { PrismaClient } from "@prisma/client";
+import * as dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
 const prisma = new PrismaClient();
 
@@ -164,8 +166,8 @@ app.delete("/api/finish", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log("Server running on localhost:3000");
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server running on localhost:${process.env.PORT || 3000}`);
 });
 
 const findWinner = (arr: any[]) => {
