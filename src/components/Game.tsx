@@ -19,7 +19,7 @@ const Grid = () => {
   useEffect(() => {
     async function startGame() {
       try {
-        await fetch(import.meta.env.VITE_URL, {
+        await fetch(`${import.meta.env.VITE_URL}api/`, {
           method: "GET",
         });
       } catch (error) {

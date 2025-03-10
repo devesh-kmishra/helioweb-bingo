@@ -28,7 +28,7 @@ app.get("/", async () => {
   }
 });
 
-app.post("/api/start", async (req, res) => {
+app.post("/start", async (req, res) => {
   const { user1, user2 } = req.body;
 
   try {
@@ -133,7 +133,7 @@ app.post("/api/start", async (req, res) => {
   }
 });
 
-app.put("/api/newturn/:num", async (req, res) => {
+app.put("/newturn/:num", async (req, res) => {
   const num = Number(req.params.num);
 
   try {
@@ -163,7 +163,7 @@ app.put("/api/newturn/:num", async (req, res) => {
   }
 });
 
-app.delete("/api/finish", async (req, res) => {
+app.delete("/finish", async (req, res) => {
   try {
     await prisma.game.deleteMany({});
   } catch (error) {
