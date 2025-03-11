@@ -16,7 +16,7 @@ app.use(
 app.use(cors());
 app.use(
   cors({
-    origin: "*",
+    origin: "0.0.0.0",
   })
 );
 
