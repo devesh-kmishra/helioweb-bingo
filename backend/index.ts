@@ -13,7 +13,11 @@ app.use(
     extended: false,
   })
 );
-app.use(cors({ credentials: true, origin: true }));
+app.use(
+  cors({
+    origin: "https://helioweb-bingo.vercel.app",
+  })
+);
 
 app.get("/api/", async () => {
   try {
