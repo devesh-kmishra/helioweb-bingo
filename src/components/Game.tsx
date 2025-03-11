@@ -19,7 +19,7 @@ const Grid = () => {
   useEffect(() => {
     async function startGame() {
       try {
-        await fetch(`${import.meta.env.VITE_URL}api/`, {
+        await fetch("/api/", {
           method: "GET",
         });
       } catch (error) {
@@ -79,7 +79,7 @@ const Grid = () => {
 
     try {
       setGameStarted(true);
-      await fetch(`${import.meta.env.VITE_URL}api/start`, {
+      await fetch("/api/start", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -99,9 +99,7 @@ const Grid = () => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_URL}api/newturn/${
-          numsArr.current[numsArr.current.length - 1]
-        }`,
+        `/api/newturn/${numsArr.current[numsArr.current.length - 1]}`,
         {
           method: "PUT",
           headers: {
@@ -135,7 +133,7 @@ const Grid = () => {
       setWon(false);
       numsArr.current = [];
 
-      await fetch(`${import.meta.env.VITE_URL}api/finish`, {
+      await fetch("/api/finish", {
         method: "DELETE",
       });
     } catch (error) {
