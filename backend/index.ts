@@ -13,7 +13,7 @@ app.use(
     extended: false,
   })
 );
-app.use(cors());
+app.use(cors({ credentials: true, origin: true }));
 
 app.get("/api/", async () => {
   try {
