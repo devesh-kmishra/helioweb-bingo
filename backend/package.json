@@ -7,7 +7,8 @@
   "type": "commonjs",
   "main": "index.ts",
   "scripts": {
-    "devStart": "nodemon index.ts"
+    "devStart": "nodemon index.ts",
+    "postinstall": "prisma generate"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
