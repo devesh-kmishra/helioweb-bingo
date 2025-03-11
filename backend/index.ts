@@ -13,10 +13,9 @@ app.use(
     extended: false,
   })
 );
-app.use(cors());
 app.use(
   cors({
-    origin: "0.0.0.0",
+    origin: "https://helioweb-bingo.vercel.app",
   })
 );
 
