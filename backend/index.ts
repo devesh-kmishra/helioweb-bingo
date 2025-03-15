@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request } from "express";
 import cors from "cors";
 import { PrismaClient } from "@prisma/client";
 import * as dotenv from "dotenv";
@@ -14,8 +14,8 @@ app.use(
   })
 );
 app.use(
-  cors({
-    origin: "https://helioweb-bingo.vercel.app",
+  cors<Request>({
+    origin: "https://helioweb-bingo.vercel.app/",
   })
 );
 
@@ -23,7 +23,7 @@ app.listen(process.env.PORT || 3000, () => {
   console.log(`Server running on localhost:${process.env.PORT || 3000}`);
 });
 
-app.get("/api/", async () => {
+app.get("/api", async () => {
   try {
     await prisma.game.deleteMany({});
   } catch (error) {
