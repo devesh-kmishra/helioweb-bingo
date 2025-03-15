@@ -1,5 +1,4 @@
 import express from "express";
-import cors from "cors";
 import { PrismaClient } from "@prisma/client";
 import * as dotenv from "dotenv";
 
@@ -11,13 +10,6 @@ app.use(express.json());
 app.use(
   express.urlencoded({
     extended: false,
-  })
-);
-app.use(
-  cors({
-    origin: "https://helioweb-bingo.vercel.app",
-    credentials: true,
-    methods: ["GET", "OPTIONS", "POST", "PUT", "PATCH", "DELETE"],
   })
 );
 
