@@ -19,7 +19,7 @@ app.listen(process.env.PORT || 3000, () => {
   console.log(`Server running on localhost:${process.env.PORT || 3000}`);
 });
 
-app.options("/api", (req, res) => {
+app.options("/", (req, res) => {
   try {
     res.sendStatus(200);
   } catch (error) {
