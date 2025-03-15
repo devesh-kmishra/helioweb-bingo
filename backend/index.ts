@@ -1,5 +1,6 @@
 import express from "express";
 import { PrismaClient } from "@prisma/client";
+import cors from "cors";
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -12,16 +13,25 @@ app.use(
     extended: false,
   })
 );
+app.use(cors());
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server running on localhost:${process.env.PORT || 3000}`);
 });
 
-app.get("/api", async () => {
+app.options("/api", (req, res) => {
+  try {
+    res.sendStatus(200);
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+});
+
+app.get("/api", async (req, res) => {
   try {
     await prisma.game.deleteMany({});
   } catch (error) {
-    console.log(error);
+    res.status(500).json({ message: error });
   }
 });
 
