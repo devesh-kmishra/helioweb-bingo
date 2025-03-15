@@ -13,6 +13,15 @@ app.use(
     extended: false,
   })
 );
+app.use(
+  cors({
+    origin: "https://helioweb-bingo.vercel.app",
+  })
+);
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server running on localhost:${process.env.PORT || 3000}`);
+});
 
 app.get("/api/", async () => {
   try {
@@ -163,10 +172,6 @@ app.delete("/api/finish", async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error });
   }
-});
-
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server running on localhost:${process.env.PORT || 3000}`);
 });
 
 const findWinner = (arr: any[]) => {
