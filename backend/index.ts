@@ -14,17 +14,25 @@ app.use(
   })
 );
 app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://helioweb-bingo.vercel.app"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,Content-Type"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", "false");
+  next();
+});
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server running on localhost:${process.env.PORT || 3000}`);
-});
-
-app.options("/", (req, res) => {
-  try {
-    res.sendStatus(200);
-  } catch (error) {
-    res.status(500).json({ message: error });
-  }
 });
 
 app.get("/api", async (req, res) => {
