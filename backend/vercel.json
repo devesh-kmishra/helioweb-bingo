@@ -15,7 +15,7 @@
         },
         {
           "key": "Access-Control-Allow-Headers",
-          "value": "X-Requested-With, Content-Type"
+          "value": "Accept, Accept-Language, Content-Language, Content-Type"
         }
       ]
     }
