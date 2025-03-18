@@ -13,14 +13,12 @@ app.use(
     extended: false,
   })
 );
-app.use(cors());
-app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-  next();
-});
+app.use(
+  cors({
+    origin: "https://helioweb-bingo.vercel.app",
+    methods: ["GET", "OPTIONS", "POST", "PUT", "PATCH", "DELETE"],
+  })
+);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server running on localhost:${process.env.PORT || 3000}`);
